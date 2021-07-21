@@ -1,0 +1,152 @@
+[bar/mybar]
+width = 100%
+height = 24
+radius = 3
+fixed-center = true
+
+background = #bb12051c
+foreground = #df0d81
+
+line-size = 3
+line-color =
+
+border-size = 5
+border-color =
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Source Code Pro Semibold"
+font-1 = FontAwesome5Free:style=Solid:size=10;1
+font-2 = FontAwesome5Free:style=Regular:size=10;1
+font-3 = FontAwesome5Brands:style=Regular:size=10;1
+
+modules-left = i3
+modules-center = date
+modules-right = spotify  powermenu
+
+tray-position =
+;tray-padding =
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/spotify_status.py --font=1    -f '{artist}: {song}'
+;control players (optional)
+click-left = playerctl --player=spotify play-pause
+click-right = playerctl --player=spotify next
+click-middle = playerctl --player=spotify previous
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+strip-wsnumbers = true
+index-sort = true
+wrapping-scroll = false
+;fuzzy-match = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-default = ♟
+
+
+label-mode-padding = 2
+
+
+label-focused = %name%
+label-focused-background = #930035
+
+label-focused-foreground = #12051c
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-background = #df0d81
+label-unfocused-foreground = #5F5269
+label-unfocused-padding = 2AC004E
+
+label-visible = %name%
+label-visible-background = #C60068
+label-visible-foreground = #12051c
+label-visible-padding = 2
+
+label-urgent = %name%
+label-urgent-background = #df0d81
+label-urgent-padding = 2
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-foreground = #12051c
+format-background = #df0d81
+format-padding = 2
+
+label = %date% %time%
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = #df0d81
+label-close =  cancel
+label-close-foreground = #df0d81
+label-separator = |
+label-separator-foreground = #aab56bc7
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log off
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log off
+menu-3-0-exec = i3 exit logout
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
